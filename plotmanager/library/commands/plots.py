@@ -39,7 +39,7 @@ def _get_backend_flags(backend, *args, **kwargs):
 
 
 def _get_chia_flags(size, memory_buffer, temporary_directory, destination_directory, threads, buckets, bitfield,
-                    temporary2_directory=None, farmer_public_key=None, pool_public_key=None,
+                    temporary2_directory=None, farmer_public_key=None, pool_public_key=None, pool_contract_address=None,
                     exclude_final_directory=False):
     flags = dict(
         k=size,
@@ -54,6 +54,8 @@ def _get_chia_flags(size, memory_buffer, temporary_directory, destination_direct
         flags['2'] = temporary2_directory
     if farmer_public_key is not None:
         flags['f'] = farmer_public_key
+    if pool_contract_address is not None:
+        flags['c'] = pool_contract_address
     if pool_public_key is not None:
         flags['p'] = pool_public_key
     if bitfield is False:
@@ -65,7 +67,7 @@ def _get_chia_flags(size, memory_buffer, temporary_directory, destination_direct
 
 
 def _get_madmax_flags(temporary_directory, destination_directory, threads, buckets,
-                      temporary2_directory=None, farmer_public_key=None, pool_public_key=None, **kwargs):
+                      temporary2_directory=None, farmer_public_key=None, pool_public_key=None, pool_contract_address=None, **kwargs):
     flags = dict(
         r=threads,
         t=temporary_directory,
@@ -77,6 +79,8 @@ def _get_madmax_flags(temporary_directory, destination_directory, threads, bucke
         flags['2'] = temporary2_directory
     if farmer_public_key is not None:
         flags['f'] = farmer_public_key
+    if pool_contract_address is not None:
+        flags['c'] = pool_contract_address
     if pool_public_key is not None:
         flags['p'] = pool_public_key
 
